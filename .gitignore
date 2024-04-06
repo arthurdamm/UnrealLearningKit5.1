@@ -1,0 +1,33 @@
+# Unreal Engine 5 specifics
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+Build/
+
+# Editor specific
+# .vs/
+# .vscode/
+# .idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+# *.ini
+# *.user
+# *.userprefs
+# *.suo
+*.log
+# *.opensdf
+# *.sdf
+# *.opendb
+# *.unoproj
+*.pidb
+Cache/
+# *.lock.json
+
+# Build output
+/Scripts/build/
+
