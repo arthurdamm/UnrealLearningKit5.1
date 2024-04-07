@@ -16,7 +16,7 @@ void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 	foo += 3;
-	SetActorLocation(FVector(-2150, -2200, 96));
+	
 	
 }
 
@@ -24,7 +24,9 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	v.Z += 0.1;
+	SetActorLocation(v);
 }
 
 
+// a function to find min of two numbers

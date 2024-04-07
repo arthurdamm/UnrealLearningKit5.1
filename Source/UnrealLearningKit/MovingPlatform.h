@@ -26,6 +26,6 @@ public:
 	UPROPERTY(EditAnywhere)
 	int foo = 37;
 	UPROPERTY(EditAnywhere)
-	FVector v = FVector(11, 12, 13);
+	FVector v = FVector(-2170, -2200, 96);
 
 };
