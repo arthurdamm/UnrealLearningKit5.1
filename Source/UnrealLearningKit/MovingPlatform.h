@@ -26,6 +26,12 @@ public:
 	UPROPERTY(EditAnywhere)
 	int foo = 37;
 	UPROPERTY(EditAnywhere)
+	FVector StartLocation = GetActorLocation();
+	UPROPERTY(EditAnywhere)
+	float distance = 0;
+	UPROPERTY(EditAnywhere)
+	float distanceFunc = 0;
+	UPROPERTY(EditAnywhere)
 	FVector v = FVector(-2170, -2200, 96);
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	FVector deltaMove = FVector(0, 0, 1);

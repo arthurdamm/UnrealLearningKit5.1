@@ -15,6 +15,7 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
+	StartLocation = GetActorLocation();
 	foo += 3;
 	
 	
@@ -31,4 +32,8 @@ void AMovingPlatform::Tick(float DeltaTime)
 		deltaMove.Z = 1;
 	location += deltaMove * DeltaTime * 100;
 	SetActorLocation(location);
+	distance = (location - StartLocation).Size();
+	distanceFunc = FVector::Dist(location, StartLocation);
+
+
 }
