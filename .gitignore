@@ -6,8 +6,8 @@ DerivedDataCache/
 # Build/
 
 # Editor specific
-# .vs/
-# .vscode/
+.vs/
+.vscode/
 # .idea/
 
 # OS generated files
