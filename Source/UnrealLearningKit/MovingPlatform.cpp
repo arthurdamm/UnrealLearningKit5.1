@@ -24,9 +24,11 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	v.Z += 0.1;
-	SetActorLocation(v);
+	FVector location = GetActorLocation();
+	if (location.Z > 1000)
+		deltaMove.Z = -1;
+	if (location.Z < 0)
+		deltaMove.Z = 1;
+	location += deltaMove * DeltaTime * 100;
+	SetActorLocation(location);
 }
-
-
-// a function to find min of two numbers

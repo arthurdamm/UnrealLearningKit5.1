@@ -27,5 +27,7 @@ public:
 	int foo = 37;
 	UPROPERTY(EditAnywhere)
 	FVector v = FVector(-2170, -2200, 96);
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	FVector deltaMove = FVector(0, 0, 1);
 
 };
