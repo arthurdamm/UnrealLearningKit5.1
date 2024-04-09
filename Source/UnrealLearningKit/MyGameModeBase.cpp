@@ -14,6 +14,7 @@ void AMyGameModeBase::BeginPlay()
     // Define the location and rotation
     FVector Location = FVector(-2390,-2770,300);
     FRotator Rotation = FRotator(0,0,0);
+    
 
     // Optionally, define a scale if you want something other than the default (1,1,1)
     FVector Scale = FVector(1.0f, 1.0f, 1.0f);
