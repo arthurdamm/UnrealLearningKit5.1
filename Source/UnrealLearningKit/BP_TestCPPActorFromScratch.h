@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "MovingPlatform.generated.h"
+#include "BP_TestCPPActorFromScratch.generated.h"
 
 UCLASS()
-class UNREALLEARNINGKIT_API AMovingPlatform : public AActor
+class UNREALLEARNINGKIT_API ABP_TestCPPActorFromScratch : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AMovingPlatform();
+	ABP_TestCPPActorFromScratch();
 
 protected:
 	// Called when the game starts or when spawned
@@ -22,17 +22,5 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	UPROPERTY(EditAnywhere)
-	float moveDistance = 100;
-
-	UPROPERTY(EditAnywhere)
-	FVector moveVelocity = FVector(0, 0, 1);
-
-	UPROPERTY(EditAnywhere)
-	FVector StartLocation = GetActorLocation();
-	
-	UPROPERTY(EditAnywhere)
-	float distanceMoved = 0;
 
 };
