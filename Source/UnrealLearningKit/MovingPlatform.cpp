@@ -30,10 +30,10 @@ void AMovingPlatform::Tick(float DeltaTime)
 	if (distanceMoved >= moveDistance)
 	{
 		FString name = GetName();
-		// UE_LOG(LogTemp, Warning, TEXT("%s DistanceMoved Overshot by: %f"), distanceMoved, *name);
+		UE_LOG(LogTemp, Warning, TEXT("%s DistanceMoved Overshot by: %f"), *name, distanceMoved);
 
-		FString LogMessage = FString::Printf(TEXT("%s DistanceMoved Overshot by: %f"), *name, distanceMoved);
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *LogMessage);
+		// FString LogMessage = FString::Printf(TEXT("%s DistanceMoved Overshot by: %f"), *name, distanceMoved);
+		// UE_LOG(LogTemp, Warning, TEXT("%s"), *LogMessage);
 
 		SetActorLocation(StartLocation + moveVelocity.GetSafeNormal() * moveDistance);
 		location = GetActorLocation();
