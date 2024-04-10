@@ -15,30 +15,47 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
-	StartLocation = GetActorLocation();
-	
-	
+	mStartLocation = GetActorLocation();
 }
 
 // Called every frame
-void AMovingPlatform::Tick(float DeltaTime)
+void AMovingPlatform::Tick(float deltaTime)
 {
-	Super::Tick(DeltaTime);
-	MovePlatform(DeltaTime);
+	Super::Tick(deltaTime);
+	MovePlatform(deltaTime);
 }
 
-void AMovingPlatform::MovePlatform(float DeltaTime)
+void AMovingPlatform::MovePlatform(float deltaTime)
 {
-	FVector location = GetActorLocation() + moveVelocity * DeltaTime;
-	distanceMoved = (location - StartLocation).Size();
-	if (distanceMoved >= moveDistance)
+	FVector nextLocation = GetNextLocation(deltaTime);
+
+	if (ShouldMoveBack(nextLocation))
 	{
 		FString name = GetName();
-		UE_LOG(LogTemp, Warning, TEXT("%s DistanceMoved Overshot by: %f"), *name, distanceMoved);
+		UE_LOG(LogTemp, Warning, TEXT("%s DistanceMoved Overshot by: %f"), *name, mDistanceMoved);
 
-		location = StartLocation + moveVelocity.GetSafeNormal() * moveDistance;
-		moveVelocity = -moveVelocity;
+		nextLocation = GetMaxLocation();
+		mMoveVelocity = -mMoveVelocity;
 	}
-	SetActorLocation(location);
+	UE_LOG(LogTemp, Warning, TEXT("%s nextLocation is %s"), *GetName(), *nextLocation.ToString());
+	SetActorLocation(nextLocation);
 
+}
+
+bool AMovingPlatform::ShouldMoveBack(FVector location)
+{
+	float distanceMoved = (location - mStartLocation).Size();
+	return distanceMoved >= mMoveDistance;
+}
+
+FVector AMovingPlatform::GetMaxLocation()
+{
+	return mStartLocation + mMoveVelocity.GetSafeNormal() * mMoveDistance;
+}
+
+FVector AMovingPlatform::GetNextLocation(float deltaTime)
+{
+	FVector next = GetActorLocation() + mMoveVelocity * deltaTime;
+	UE_LOG(LogTemp, Warning, TEXT("%s next %s"), *GetName(), *next.ToString());
+	return next;
 }

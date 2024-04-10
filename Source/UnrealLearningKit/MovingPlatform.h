@@ -23,19 +23,25 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-private:
+public:
 	UPROPERTY(EditAnywhere)
-	float moveDistance = 100;
+	float mMoveDistance = 100;
 
 	UPROPERTY(EditAnywhere)
-	FVector moveVelocity = FVector(0, 0, 1);
+	FVector mMoveVelocity = FVector(0, 0, 100);
 
 	UPROPERTY(EditAnywhere)
-	FVector StartLocation = GetActorLocation();
+	FVector mStartLocation = GetActorLocation();
 	
 	UPROPERTY(EditAnywhere)
-	float distanceMoved = 0;
+	float mDistanceMoved = 0;
 
-	void MovePlatform(float DeltaTime);
+	void MovePlatform(float deltaTime);
+
+	bool ShouldMoveBack(FVector location);
+
+	FVector GetMaxLocation();
+
+	FVector GetNextLocation(float deltaTime);
 
 };
