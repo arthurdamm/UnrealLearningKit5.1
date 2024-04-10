@@ -23,12 +23,13 @@ void AMovingPlatform::Tick(float deltaTime)
 {
 	Super::Tick(deltaTime);
 	MovePlatform(deltaTime);
+	RotatePlatform(deltaTime);
 }
 
 void AMovingPlatform::MovePlatform(float deltaTime)
 {
 	FVector nextLocation = GetNextLocation(deltaTime);
-
+	
 	if (ShouldMoveBack(nextLocation))
 	{
 		FString name = GetName();
@@ -58,4 +59,10 @@ FVector AMovingPlatform::GetNextLocation(float deltaTime)
 	FVector next = GetActorLocation() + mMoveVelocity * deltaTime;
 	UE_LOG(LogTemp, Warning, TEXT("%s next %s"), *GetName(), *next.ToString());
 	return next;
+}
+
+void AMovingPlatform::RotatePlatform(float deltaTime)
+{
+	FRotator nextRotation = mRotateVelocity * deltaTime;
+	AddActorLocalRotation(nextRotation);
 }

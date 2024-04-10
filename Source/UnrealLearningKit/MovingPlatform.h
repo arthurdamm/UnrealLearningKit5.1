@@ -36,6 +36,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	float mDistanceMoved = 0;
 
+	UPROPERTY(EditAnywhere, Category="Rotation")
+	FRotator mRotateVelocity;
+
 	void MovePlatform(float deltaTime);
 
 	bool ShouldMoveBack(FVector location);
@@ -43,5 +46,7 @@ public:
 	FVector GetMaxLocation();
 
 	FVector GetNextLocation(float deltaTime);
+
+	void RotatePlatform(float);
 
 };
