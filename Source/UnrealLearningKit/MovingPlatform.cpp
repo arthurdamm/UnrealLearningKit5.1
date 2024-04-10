@@ -24,20 +24,21 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	MovePlatform(DeltaTime);
+}
+
+void AMovingPlatform::MovePlatform(float DeltaTime)
+{
 	FVector location = GetActorLocation() + moveVelocity * DeltaTime;
-	SetActorLocation(location);
 	distanceMoved = (location - StartLocation).Size();
 	if (distanceMoved >= moveDistance)
 	{
 		FString name = GetName();
 		UE_LOG(LogTemp, Warning, TEXT("%s DistanceMoved Overshot by: %f"), *name, distanceMoved);
 
-		// FString LogMessage = FString::Printf(TEXT("%s DistanceMoved Overshot by: %f"), *name, distanceMoved);
-		// UE_LOG(LogTemp, Warning, TEXT("%s"), *LogMessage);
-
-		SetActorLocation(StartLocation + moveVelocity.GetSafeNormal() * moveDistance);
-		location = GetActorLocation();
+		location = StartLocation + moveVelocity.GetSafeNormal() * moveDistance;
 		moveVelocity = -moveVelocity;
 	}
-	
+	SetActorLocation(location);
+
 }

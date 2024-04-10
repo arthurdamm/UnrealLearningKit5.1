@@ -23,6 +23,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+private:
 	UPROPERTY(EditAnywhere)
 	float moveDistance = 100;
 
@@ -34,5 +35,7 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	float distanceMoved = 0;
+
+	void MovePlatform(float DeltaTime);
 
 };
